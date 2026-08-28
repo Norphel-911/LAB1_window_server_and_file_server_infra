@@ -1,3 +1,13 @@
 Configuration de la machine client(window10):
 I. Le setup de vm window 10. 
-I. rejoindre la macine dans active directory et tester authentification par ad. 
+II. rejoindre la macine dans active directory et tester authentification par ad. 
+
+I. 
+
+1. On télécharge l'image ISO depuis le navigateur. On crée une nouvelle machine virtual sur vmware workstation. 
+attention: Dans le parametre de ce nouvel vm, on lui donne la carte réseau "Segment LAN" nommé vlan20. notre vm pfsense ayant 3 carte réseau pour lui, wna, lan(vlan 10 pour les serveurs) 
+et OPT1(vlan20)on donne la carte réseau "SEGMENT LAN" commé vlan10 pour tous les serveurs. 
+On lui donne les specs minimal requis. 
+Et on ajoute biensur l'image ISO windows10 dedans. Et puis on procède au boot de window en suivants les étapes donnée par windows.  
+
+2. une fois à l'intérieur, on remarque que par la carte réseau vlan20 lui a bien attribué l'ip configuré préalable sur pfsense. Mais le dns n'était pas bon. ip a

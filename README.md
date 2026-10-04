@@ -16,7 +16,7 @@ Ce projet a été réalisé dans le cadre d'un apprentissage pratique pour conce
 ## 🏗️ Architecture du Réseau
 L'environnement a été entièrement virtualisé sous **VMware**, en utilisant trois interfaces réseau distinctes sur le pare-feu pfSense pour simuler une segmentation rigoureuse :
 
-![Schéma d'architecture du Lab1](./schema-lab1.png)
+![Schéma d'architecture du Lab1](Images/architecture_réseau.png)
 
 ### Détail des interfaces et segments :
 * **`em0` (WAN) :** Connectée en mode NAT/Bridge pour l'accès aux mises à jour et simuler la passerelle vers l'extérieur.

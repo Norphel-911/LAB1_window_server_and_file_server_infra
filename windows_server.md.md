@@ -11,21 +11,20 @@ Avant d'installer les rôles Active Directory, la machine Windows Server doit di
 
 | Paramètre | Valeur |
 | :--- | :--- |
-| **Nom de la machine** | `SRV-AD-01` (par exemple) |
+| **Nom de la machine** | `WIN-319OAIOND86` |
 | **Adresse IP statique** | `192.168.10.10/24` |
 | **Passerelle par défaut** | `192.168.10.1` (pfSense) |
-| **Serveur DNS préféré** | `127.0.0.1` ou `192.168.10.1` |
+| **Serveur DNS préféré** | `192.168.10.10` et `192.168.10.1` |
 
 ---
 
 ## 3. Installation du Rôle Active Directory Domain Services (AD DS)
 1. Ouvrir le **Gestionnaire de serveur** (Server Manager).
-2. Cliquer sur **Ajouter des rôles et des fonctionnalités** (Add roles and features).
-3. Dans l'assistant, avancer jusqu'à l'étape **Rôles de serveurs** (Server Roles).
-4. Cocher la case **Services d'annuaire Active Directory** (Active Directory Domain Services).
-5. Cliquer sur *Ajouter des fonctionnalités* (Add Features) lorsque la fenêtre contextuelle apparaît, puis valider et lancer l'installation.
+2. Cliquer sur **Ajouter des rôles et des fonctionnalités**.
+3. À l'étape **Rôles de serveurs**, cocher **Services d'annuaire Active Directory** (AD DS). Valider l'ajout automatique des fonctionnalités associées (*Features* par défaut).
+4. Poursuivre l'assistant sans modifier les fonctionnalités supplémentaires (les outils d'administration s'installent d'office), puis lancer l'installation.
 
-![Installation du rôle AD DS](Images/ad/ad-ds-install.png)
+![Installation du rôle AD DS](Images/windows_server/ad_section_3.png)
 
 ---
 
@@ -35,7 +34,7 @@ Une fois le rôle installé, une notification (triangle jaune) apparaît dans le
 1. Cliquer sur **Promouvoir ce serveur en contrôleur de domaine** (Promote this server to a domain controller).
 2. Dans l'assistant de déploiement d'Active Directory :
    * Sélectionner **Ajouter une nouvelle forêt** (Add a new forest).
-   * **Nom de domaine racine** : Indiquer le nom de ton domaine (ex: `local.LAB1` ou `entreprise.lan`).
+   * **Nom de domaine racine** : Indiquer le nom de son domaine : `lab1.local`
 3. Dans les options du contrôleur de domaine :
    * Laisser le niveau fonctionnel de la forêt et du domaine par défaut.
    * S'assurer que les cases **Serveur DNS (Domain Name System)** et **Catalogue global (GC)** sont bien cochées.
@@ -44,14 +43,15 @@ Une fois le rôle installé, une notification (triangle jaune) apparaît dans le
 5. Valider les chemins d'accès, vérifier les prérequis, puis cliquer sur **Installer**.
 6. Le serveur va automatiquement redémarrer pour finaliser la promotion.
 
-![Promotion du DC et configuration DNS](Images/ad/dns-manager.png)
+![Promotion du DC et configuration DNS](Images/windows_server/ad_section_4.png)
 
 ---
 
 ## 5. Vérification post-installation
 Après le redémarrage, vérifier le bon fonctionnement des services essentiels :
 * **Vérification du service DNS :** Ouvrir le gestionnaire DNS et s'assurer que les zones de recherche directe et inversée pour le domaine sont présentes et dynamiques.
+![Verification de service DNS](Images/windows_server/ad_section_5.png)
 * **Vérification de l'annuaire :** Ouvrir *Utilisateurs et ordinateurs Active Directory* (`dsa.msc`) pour valider la structure par défaut (conteneurs *Users*, *Computers*, etc.).
-
+![Vérification de l'annuaire](Images/windows_server/ad_section_5_1.png)
 ---
 > *Note : Les étapes de jonction des clients et des autres serveurs (comme le serveur Samba/Ubuntu) ainsi que les tests d'authentification centralisée sont documentés dans la section dédiée aux clients et à la validation.*

@@ -25,7 +25,7 @@ Option 2 - Assigner les IPs
 	-em1 = 192.168.10.1/24 + SANS DHCP, car les serveurs auront besoins d'une IP fixe.   
 	-em2 = 192.168.20.1/24 + DHCP  
  
-![Console de mon pfsense après la config.](Images/console-pfsense.png)
+![Console de mon pfsense après la config.](Images/pfsense/console-pfsense.png)
 
 ## 3. Web_GUI pfsense
 ### Configuation d'ubuntu vm : 
